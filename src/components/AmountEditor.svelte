@@ -48,11 +48,12 @@
   </label>
   {#if note}<div class="muted small">{note(value)}</div>{/if}
   <div class="steps" style:--cols={steps.length}>
-    {#each [...steps].reverse() as s (s)}
-      <button type="button" onclick={() => bump(-s)}>−{stepLabel(s)}</button>
+    <!-- Same order in both rows so each − sits directly under its +. -->
+    {#each steps as s (s)}
+      <button type="button" class="add" onclick={() => bump(s)}>+{stepLabel(s)}</button>
     {/each}
     {#each steps as s (s)}
-      <button type="button" onclick={() => bump(s)}>+{stepLabel(s)}</button>
+      <button type="button" class="sub" onclick={() => bump(-s)}>−{stepLabel(s)}</button>
     {/each}
   </div>
   <div class="row">
@@ -72,5 +73,16 @@
   .steps button {
     padding: 10px 0;
     font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+  .steps .add {
+    color: var(--pos);
+    background: color-mix(in srgb, var(--pos) 12%, var(--card));
+    border-color: color-mix(in srgb, var(--pos) 35%, var(--card));
+  }
+  .steps .sub {
+    color: var(--neg);
+    background: color-mix(in srgb, var(--neg) 12%, var(--card));
+    border-color: color-mix(in srgb, var(--neg) 35%, var(--card));
   }
 </style>
