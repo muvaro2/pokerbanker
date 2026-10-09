@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import Help from './components/Help.svelte'
   import Home from './components/Home.svelte'
   import Room from './components/Room.svelte'
   import { cleanupExpiredRooms, normalizeCode } from './lib/room'
@@ -22,4 +23,5 @@
   {/key}
 {:else}
   <Home />
+  <Help />
 {/if}

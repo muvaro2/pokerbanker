@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { LogEntry } from '../lib/state'
+  import Help from './Help.svelte'
 
   interface Props {
     log: LogEntry[]
@@ -35,10 +36,13 @@
 </script>
 
 <aside class="log" class:open>
-  <button class="log-toggle" onclick={toggle} aria-expanded={open}>
-    <span>Log ({log.length})</span>
-    <span>{open ? '▾' : '▴'}</span>
-  </button>
+  <div class="log-bar">
+    <button class="log-toggle" onclick={toggle} aria-expanded={open}>
+      <span>Log ({log.length})</span>
+      <span>{open ? '▾' : '▴'}</span>
+    </button>
+    <Help variant="inline" />
+  </div>
   {#if open}
     <ol class="log-list">
       {#each newestFirst as entry (entry.id)}

@@ -3,6 +3,7 @@
   import { formatCents } from '../lib/money'
   import { newPlayerId, savePlayer, savedPlayer, sendEvent, setWriteErrorHandler, watchRoom, type NewEvent, type RoomSnapshot } from '../lib/room'
   import { atTable, replay } from '../lib/state'
+  import Help from './Help.svelte'
   import JoinForm from './JoinForm.svelte'
   import LogPanel from './LogPanel.svelte'
   import PlayerCard from './PlayerCard.svelte'
@@ -117,4 +118,6 @@
 
 {#if snapshot?.exists}
   <LogPanel log={room.log} canAct={!!mePlayer} onundo={(target) => send({ t: 'undo', target })} />
+{:else}
+  <Help />
 {/if}

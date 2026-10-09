@@ -400,8 +400,12 @@ button:focus-visible {
   border-top: 1px solid var(--line);
   padding-bottom: env(safe-area-inset-bottom);
 }
+.log-bar {
+  display: flex;
+  align-items: center;
+}
 .log-toggle {
-  width: 100%;
+  flex: 1;
   display: flex;
   justify-content: space-between;
   background: none;
